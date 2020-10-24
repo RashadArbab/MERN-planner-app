@@ -1,6 +1,7 @@
 import React ,{useEffect, useState} from 'react';
 import axios from 'axios'; 
 import Navbar from './Navbar'
+import './Notes.css'
 function Notes(){
 
     //This is just a string because we are sending just one 
@@ -42,8 +43,12 @@ function Notes(){
     }, []) ;
 
      
-    const DataList = dataSet.map((element)=>{
-        return <div>{element}</div>
+    const DataList = dataSet.map((element, index)=>{
+        return <div className ="row justify-content-center">
+            <div class="col-md-8 text-left"> 
+            <h1 style={{color:"white" , fontSize: "30px"  }}> {index}. {element}</h1>
+            </div>
+            </div>
     })
     
     
@@ -71,11 +76,12 @@ function Notes(){
         }
 
         console.log("note down " + newNote);
-        axios.post('/api/user/notes/add' , newNote).then(res=>{
+        axios.post('/api/user/notes/add/' , newNote).then(res=>{
             console.log(res); 
         }).catch(err=>{
             console.log(err); 
         })
+        window.location.href='/app/notes/'
 
 
     }
@@ -84,10 +90,10 @@ function Notes(){
         return(
         <div>
         <div> 
-            <h1> Notes </h1>
+            <h1 style={{color:'white'}} > Notes </h1>
             
        
-        </div>
+        </div> 
             <form onSubmit={noteDown}>
                 <input type="text" placeholder="Note" className='form-control' value={notes}  onChange={(e)=>{setNote(e.target.value)}}/>
                 <input type="submit" value="AddNote" className="btn btn-primary"/> 

@@ -21,8 +21,8 @@ function Login(){
         
         axios.post('/api/user/login' , user).then(res =>{
             console.log(res);
-
-            alert(res.data); 
+            window.location.href = '/app/notes/'; 
+            alert('Welcome Back'); 
 
         }).catch(err =>{
 
@@ -37,7 +37,7 @@ function Login(){
 
     return <div> 
         
-        <h1>Login</h1>
+        <h1 style={{color: 'white'}}>Login</h1>
         
         <form onSubmit={login}>
             

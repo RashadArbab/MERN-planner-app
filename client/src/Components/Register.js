@@ -33,6 +33,8 @@ function Register(){
         });
 
         console.log(users);
+        
+        window.location.href = '/app/login/'; 
     }
 
     function passwordCheck(event){
@@ -48,7 +50,7 @@ function Register(){
 
     return <div> 
         
-        <h1>Sign Up</h1>
+        <h1 style={{color: 'white'}}>Sign Up</h1>
        
         <form onSubmit={passwordCheck}>
             <input type="text" placeholder="Name" className='form-control' value={name}  onChange={(e)=>{setName(e.target.value)}}/>

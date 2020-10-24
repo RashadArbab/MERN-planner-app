@@ -10,10 +10,13 @@
   "author": "Rashad arbab",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.20.0",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.5.3",
     "express": "^4.17.1",
     "mongoose": "^5.10.9",
     "nodemon": "^2.0.6",
+    "react": "^17.0.0",
     "router": "^1.3.5"
   }
 }
