@@ -20,7 +20,7 @@ function App() {
   return (
     <div className="App">
 
-
+    
      
       
       <div className="App">
@@ -29,7 +29,11 @@ function App() {
 
       <Navbar/>
       
+      
           <Switch>
+          <Route path ='/' exact>
+            <Redirect to='/app/' />
+          </Route>
           <Route path='/app/' component={Register} exact /> 
           
           <Route path='/app/login/' component={Login} exact/> 

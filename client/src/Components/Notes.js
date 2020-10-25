@@ -42,7 +42,7 @@ function Notes(){
         
         axios.post('/api/user/notes/getName/').then(answer=>{
             console.log('Name received ' + answer.data); 
-            Name = answer.data.name; 
+            setName(answer.data);
         }).catch(err=>{
             console.log(err); 
         })
@@ -119,7 +119,7 @@ function Notes(){
         return(
         <div>
         <div> 
-            <h1 style={{color:'white' , fontFamily : "TimesNewRoman"}} >{Name}'s' Notes </h1>
+            <h1 style={{color:'white' , fontFamily : "TimesNewRoman"}} >{Name}'s Notes </h1>
             
        
         </div> 

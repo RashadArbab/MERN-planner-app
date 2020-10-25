@@ -37,14 +37,14 @@ function Login(){
 
     return <div> 
         
-        <h1 style={{color: 'white'}}>Login</h1>
+        <h1 style={{color: 'white' , fontFamily: 'TimesNewRoman'}}>Login</h1>
         
         <form onSubmit={login}>
             
             <input type="text" placeholder="User Name" className='form-control' value={userName}  onChange={(e)=>{setUserName(e.target.value)}}/>
             <input type="text" placeholder="Password" className='form-control' value={pass}  onChange={(e)=>{setPass(e.target.value)}}/>
          
-            <input type="submit" value="Login" className="btn btn-primary"/> 
+            <input type="submit" value="Login" className="btn btn-primary" style={{fontFamily: 'TimesNewRoman'}}/> 
             
     
         </form>

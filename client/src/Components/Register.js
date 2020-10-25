@@ -50,7 +50,7 @@ function Register(){
 
     return <div> 
         
-        <h1 style={{color: 'white'}}>Sign Up</h1>
+        <h1 style={{color: 'white' , fontFamily : 'TimesNewRoman'}}>Sign Up</h1>
        
         <form onSubmit={passwordCheck}>
             <input type="text" placeholder="Name" className='form-control' value={name}  onChange={(e)=>{setName(e.target.value)}}/>
@@ -58,7 +58,7 @@ function Register(){
             <input type="text" placeholder="Password" className='form-control' value={pass}  onChange={(e)=>{setPass(e.target.value)}}/>
             <input type="text" placeholder="Confirm Password" className='form-control' value={passCheck}  onChange={(e)=>{setPassCheck(e.target.value)}}/>
            
-            <input type="submit" value="register" className="btn btn-primary"/> 
+            <input type="submit" value="Register" className="btn btn-primary" style={{fontFamily: 'TimesNewRoman'}}/> 
             
     
         </form>
