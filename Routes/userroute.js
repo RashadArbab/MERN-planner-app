@@ -72,7 +72,8 @@ router.post('/notes/add' , (req, res)=>{
                 userName : useName 
                 
             }, {
-                $push : {notes : note}
+                //add to set makes sure that so long as note does not already exist it will add it to the array
+                $addToSet : {notes : note}
             }, (err)=>{
                 if(err){
                     res.send('Adding note failed')
@@ -88,6 +89,44 @@ router.post('/notes/add' , (req, res)=>{
     }) 
 
 });
+
+
+
+router.post('/notes/remove/' , (req, res)=>{
+    
+    let note = req.body.note; 
+    console.log('removing: ' + note); 
+    console.log('username: ' + useName); 
+
+    userModel.findOneAndUpdate({userName : useName} , {$pull : {notes : note}} , (err)=>{
+        if(err){
+            res.send('removal failed'); 
+        }
+        else{
+            res.send('successfully removed '  + note); 
+        }
+    });
+
+    
+
+
+
+});
+
+router.post('/notes/getName/' , (req, res)=>{
+    console.log('reached /notes/getName/' )
+    userModel.findOne({userName : useName}  , (err , documents)=>{
+        if(err){
+
+            res.send("the error is"); 
+        }
+        else{
+            let name = documents.name ; 
+            res.send(name); 
+        } 
+    }) 
+});
+
    
 
 
