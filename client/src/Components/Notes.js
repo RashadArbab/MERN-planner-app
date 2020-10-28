@@ -18,8 +18,7 @@ function Notes(){
   
     
     const [dataSet , setDataSet] = useState([]); 
-   
-    const [dataList, setDataList] = useState(); 
+    
 
     useEffect(() =>{
         console.log("Use Effect Notes.js");
@@ -52,8 +51,8 @@ function Notes(){
 
     
     const DataList = dataSet.map((element, num)=>{
-        if(num == 0) {
-
+        if(num === 0) {
+            console.log("cannot find any data");
         }
         else {
         return <div className ="row justify-content-center">
@@ -85,13 +84,7 @@ function Notes(){
         window.location.href='/app/notes/'
 
     }
-    /*
-    function settingIndex(index) {
-        console.log("settingIndex" + index);
-        setIndex(index)
-        removeNote(event); 
-    }
-    */
+   
 
     function noteDown(event){
         event.preventDefault();

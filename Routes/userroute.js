@@ -72,8 +72,7 @@ router.post('/notes/add' , (req, res)=>{
                 userName : useName 
                 
             }, {
-                //add to set makes sure that so long as note does not already exist it will add it to the array
-                $addToSet : {notes : note}
+                $push : {notes : note}
             }, (err)=>{
                 if(err){
                     res.send('Adding note failed')
@@ -90,41 +89,30 @@ router.post('/notes/add' , (req, res)=>{
 
 });
 
-
-
 router.post('/notes/remove/' , (req, res)=>{
-    
+    let index = req.body.number; 
+    console.log("removing index of " + index); 
     let note = req.body.note; 
-    console.log('removing: ' + note); 
-    console.log('username: ' + useName); 
-
-    userModel.findOneAndUpdate({userName : useName} , {$pull : {notes : note}} , (err)=>{
+    userModel.find({userName: useName} , (err) =>{
         if(err){
-            res.send('removal failed'); 
+            res.send(err); 
+        }else {
+            console.log("this is index inside notes/remove " + index);
+            userModel.update({userName: useName} , {notes : {$pop : note}}), (err)=>{
+                if(err){
+                    res.send(err); 
+                }
+                else{
+                    
+                    res.send('nullified');
+                }
+            }
+            userModel.update({userName:useName}, {$pop : {"notes" : null }})
+            
         }
-        else{
-            res.send('successfully removed '  + note); 
-        }
+
     });
 
-    
-
-
-
-});
-
-router.post('/notes/getName/' , (req, res)=>{
-    console.log('reached /notes/getName/' )
-    userModel.findOne({userName : useName}  , (err , documents)=>{
-        if(err){
-
-            res.send("the error is"); 
-        }
-        else{
-            let name = documents.name ; 
-            res.send(name); 
-        } 
-    }) 
 });
 
    
@@ -154,6 +142,33 @@ router.post('/login' , (req, res)=>{
 
 
 })
+
+router.post("/login-exists/" , (req, res)=>{
+
+    var name = req.body.tempUserName ; 
+    console.log("this is name " + name); 
+     userModel.find({userName: name} , (err , documents)=>{
+         
+        if(err){
+            res.send(err);
+        }
+        else{
+            console.log("no errors")
+             if (documents.length != 0){
+                 
+                 res.send(true); 
+             }
+             else {
+                 res.send('no user found'); 
+             }
+        }
+     })
+    
+    
+
+
+})
+
 
 
 
