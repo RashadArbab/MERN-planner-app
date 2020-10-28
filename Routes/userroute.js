@@ -143,6 +143,33 @@ router.post('/login' , (req, res)=>{
 
 })
 
+router.post("/login-exists/" , (req, res)=>{
+
+    var name = req.body.tempUserName ; 
+    console.log("this is name " + name); 
+     userModel.find({userName: name} , (err , documents)=>{
+         
+        if(err){
+            res.send(err);
+        }
+        else{
+            console.log("no errors")
+             if (documents.length != 0){
+                 
+                 res.send(true); 
+             }
+             else {
+                 res.send('no user found'); 
+             }
+        }
+     })
+    
+    
+
+
+})
+
+
 
 
 
