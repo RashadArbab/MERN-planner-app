@@ -28,8 +28,16 @@ function Login(){
                 window.location.href = '/app/login/'; 
             }
             else {
-            window.location.href = '/app/notes/'; 
-            alert('Welcome Back'); 
+                
+                axios.post('/api/user/notes/getName ').then(res=>{
+                    var name = res.data ; 
+                    console.log('client: login: name revceived: ' + name)
+                    alert('welcome back ' + name)
+                    window.location.href = '/app/notes/';  
+                })
+
+               
+                
             }
 
         }).catch(err =>{
@@ -55,8 +63,9 @@ function Login(){
                 login(); 
             }
             else{
+                window.location.href = "/app/login/" ;
                 alert(res.data); 
-                window.location.href("/app/login/");
+                
             }
         }).catch(err =>{
             console.log(err); 
