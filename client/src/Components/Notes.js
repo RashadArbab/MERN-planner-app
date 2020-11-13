@@ -39,11 +39,14 @@ function Notes(){
 
         console.log("The array that i got ");
         
-        axios.post('/api/user/notes/getName/').then(answer=>{
-            console.log('Name received ' + answer.data); 
-            setName(answer.data);
+        axios.post('/api/user/notes/getName').then((res)=>{
+            console.log('client: we got something in return')
+            console.log('client: Name received ' + res.data); 
+            setName(res.data);
         }).catch(err=>{
+            console.log('client: get name error'); 
             console.log(err); 
+            setName("tom")
         })
         
         

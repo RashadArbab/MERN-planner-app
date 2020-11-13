@@ -94,7 +94,7 @@ router.post('/notes/remove/' , (req, res)=>{
     
     let note = req.body.note
    
-    console.log('msg reveived ' + note); 
+    console.log('Server: msg reveived ' + note); 
    
         userModel.findOneAndUpdate({userName: useName} , {$pull: {notes : note}} , (err)=>{
             if(err){
@@ -153,10 +153,25 @@ router.post("/login-exists/" , (req, res)=>{
              }
         }
      })
-    
-    
 
+})
 
+router.post('/notes/getName' , (req,res)=>{
+    console.log('server: get name accessed')
+    var name = userModel.findOne({userName : useName} , (err, Document)=>{
+        if (err){
+            console.log(
+                'server: getName : error finding user with useName or getting document'
+            )
+        }
+        else{
+            console.log(
+                'server: getName: name sent: ' + Document.name
+            )
+            res.send(Document.name); 
+        }
+    })
+    
 })
 
 
