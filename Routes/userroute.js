@@ -90,30 +90,20 @@ router.post('/notes/add' , (req, res)=>{
 });
 
 router.post('/notes/remove/' , (req, res)=>{
-    let index = req.body.number; 
-    console.log("removing index of " + index); 
-    let note = req.body.note; 
-    userModel.find({userName: useName} , (err) =>{
-        if(err){
-            res.send(err); 
-        }else {
-            console.log("this is index inside notes/remove " + index);
-            userModel.update({userName: useName} , {notes : {$pop : note}}), (err)=>{
-                if(err){
-                    res.send(err); 
-                }
-                else{
-                    
-                    res.send('nullified');
-                }
+    
+    
+    let note = req.body.note
+   
+    console.log('msg reveived ' + note); 
+   
+        userModel.findOneAndUpdate({userName: useName} , {$pull: {notes : note}} , (err)=>{
+            if(err){
+                res.send(err); 
+            }else {
+                console.log("remove successful")
             }
-            userModel.update({userName:useName}, {$pop : {"notes" : null }})
-            
-        }
-
-    });
-
-});
+        })
+    })
 
    
 

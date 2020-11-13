@@ -74,7 +74,8 @@ function Notes(){
         }
 
         console.log("this is the Note" + element); 
-     
+        
+        console.log('msg being sent' + msg); 
         axios.post('/api/user/notes/remove/' , msg).then(res=>{
             console.log(res); 
         }).catch((err)=>{
