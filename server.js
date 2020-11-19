@@ -19,7 +19,8 @@ app.get('/api/homePage', (req , res)=>{
 
 
 
-const port = process.env.NODE_ENV === 'production' ? (process.env.PORT || 80) : (process.env.PORT || 4000);
-const server = app.listen(port, function () {
-    console.log('Server listening on port ' + port);
-});
+var port = 4000|| process.env.port ;
+console.log("async"); 
+console.log('listening on ' + port); 
+
+app.listen(40230); 

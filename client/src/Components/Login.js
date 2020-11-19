@@ -77,14 +77,25 @@ function Login(){
 
     return <div> 
         
-        <h1 style={{color: 'white' , fontFamily: 'TimesNewRoman'}}>Login</h1>
+        <p style={{color: 'white' , fontSize: "25px", fontFamily: 'Varela'}}>Login</p>
         
         <form onSubmit={userExists}>
             
-            <input type="text" placeholder="User Name" className='form-control' value={userName}  onChange={(e)=>{setUserName(e.target.value)}}/>
-            <input type="text" placeholder="Password" className='form-control' value={pass}  onChange={(e)=>{setPass(e.target.value)}}/>
+            <input type="text" 
+            placeholder="Username" 
+            className='form-control' 
+            value={userName}  
+            onChange={(e)=>{setUserName(e.target.value)}}
+            style={{color: 'slateGray',  fontFamily: 'varela'}}/>
+            
+            
+            <input type="text" 
+            placeholder="Password"
+            className='form-control' 
+            value={pass}  onChange={(e)=>{setPass(e.target.value)}} 
+            style={{color: 'slateGray',  fontFamily: 'varela'}}/>
          
-            <input type="submit" value="Login" className="btn btn-primary" style={{fontFamily: 'TimesNewRoman'}}/> 
+            <input type="submit" value="Login" className="btn btn-primary" style={{color: 'white' , fontFamily : 'varela'}} /> 
             
     
         </form>

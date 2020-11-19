@@ -5,21 +5,21 @@ import { BrowserRouter } from 'react-router-dom';
 
 function Navbar() {
     return (<div>
-           <p style={{color: 'white', fontWeight:'550', fontSize:'50px' , fontFamily:  "TimesNewRoman"}}> Simple Planner </p>
-            <div className ='navbarOptions' style={{backgroundColor:  'rgba(39, 50, 54, 0.568)' , borderRadius : '10px' , margin: '20px' }}> 
+           <p className= 'AppTitle'> Simple Planner </p>
+            <div className="navbarOptions"> 
         
             
-            <ul>
-                <Link to='/app/' exact style={{  fontSize:'30px', color: 'white' , fontFamily: "TimesNewRoman"}}>
+            <ul  >
+                <Link to='/app/' exact >
                     
-                    <li >
+                    <li className='link'>
                         Register
                     </li>
                     
                     
                 </Link>
-                <Link to='/app/login/' exact  style={{fontSize:'30px', color: 'white',  fontFamily: "TimesNewRoman"}}>
-                    <li>
+                <Link to='/app/login/' exact>
+                    <li className='link'>
                         Login
                     </li>
                     

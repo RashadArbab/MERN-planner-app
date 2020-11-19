@@ -78,7 +78,7 @@ router.post('/notes/add' , (req, res)=>{
                     res.send('Adding note failed')
                 }
                 else{
-                    res.send('adding note success maybe ' + note)
+                    res.send('added note succesfully ' + note)
                 }
             })
 
